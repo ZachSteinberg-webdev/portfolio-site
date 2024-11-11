@@ -1,0 +1,39 @@
+<%layout("layouts/boilerplate")%>
+<%block('head').append(`<link rel="stylesheet" href="/css/status404.css">`) %>
+<%block('head').append(`<title>Page not found! :(</title>`) %>
+<div class="status-404-container">
+	<div class="status-404-heading-container">
+		<h1 class="status-404-heading">Page Not Found!</h1>
+	</div>
+	<div class="status-404-emoji-container">
+		<%const randomNumber = (min,max)=>{%>
+			<%return Math.floor(Math.random() * (max - min + 1) + min);%>
+		<%}%>
+		<%const randomValue = randomNumber(1,4);%>
+		<%if(randomValue===1){%>
+			<img class="status-404-emoji" src="/images/shocked-cow-emoji.png" alt="Shocked cow emoji">
+		<%}else if(randomValue===2){%>
+			<img class="status-404-emoji" src="/images/sad-cow-emoji.png" alt="Sad cow emoji">
+		<%}else if(randomValue===3){%>
+			<img class="status-404-emoji" src="/images/exploding-head-cow-emoji.png" alt="Exploding head cow emoji">
+		<%}else if(randomValue===4){%>
+			<img class="status-404-emoji" src="/images/crying-cow-emoji.png" alt="Crying cow emoji">
+		<%}%>
+	</div>
+	<div class="status-404-text-container">
+		<p class="status-404-text">Unfortunately, we can't find that page. If you:</p>
+		<ul class="status-404-list">
+			<li class="status-404-list-item">typed in the URL manually, you should double check it and try again.</li>
+			<li class="status-404-list-item">are returning to a page you had bookmarked, the page might have been removed or the address might have been changed since you bookmarked it.</li>
+			<li class="status-404-list-item">clicked on a link on this website that took your here, please report it to the admins using the contact feature.</li>
+		</ul>
+		<p class='status-404-go-back-text'>
+			<a class='status-404-go-back-link-icon' href="/">
+				<span class='status-404-go-back-icon'>☜</span>
+			</a>
+			<a class='status-404-go-back-link' href="/">
+				Go home
+			</a>
+		</p>
+	</div>
+</div>

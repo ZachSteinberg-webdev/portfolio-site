@@ -1,0 +1,43 @@
+<%layout("layouts/boilerplate")%>
+<% block('head').append(`<title>Whoa now!</title>`) %>
+<%block('head').append(`<link rel="stylesheet" href="/css/error.css">`) %>
+<div class="error-container">
+	<div class="error-heading-container">
+		<h1 class="error-heading">Error: <%=err.name%></h1>
+	</div>
+	<div class="error-emoji-container">
+		<%const randomNumber = (min,max)=>{%>
+			<%return Math.floor(Math.random() * (max - min + 1) + min);%>
+		<%}%>
+		<%const randomValue = randomNumber(1,4);%>
+		<%if(randomValue===1){%>
+			<img class="error-emoji" src="/images/shocked-cow-emoji.png" alt="Shocked cow emoji">
+		<%}else if(randomValue===2){%>
+			<img class="error-emoji" src="/images/sad-cow-emoji.png" alt="Sad cow emoji">
+		<%}else if(randomValue===3){%>
+			<img class="error-emoji" src="/images/exploding-head-cow-emoji.png" alt="Exploding head cow emoji">
+		<%}else if(randomValue===4){%>
+			<img class="error-emoji" src="/images/crying-cow-emoji.png" alt="Crying cow emoji">
+		<%}%>
+	</div>
+	<div class="error-text-container">
+		<p class="error-text">Unfortunately, you've encountered the following error:</p>
+		<p class="error-text"><%=err.message%></p>
+		<p class="error-text">Please go back to the previous page and try again.</p>
+	</div>
+</div>
+<div class="error-stack-trace row">
+	<div class="col-6 offset-3">
+		<div class="alert alert-danger" role="alert">
+			<h4 class="alert-heading">Error! Error! WEEEEE-woooo WEEEEEE-wooooooo!!!!!!!!!</h4>
+			<p><%=err.message%></p>
+			<%if (process.env.NODE_ENV !== "production") { %>
+			<hr>
+			<p><%=err.stack%></p>
+			<% } %>
+		</div>
+	</div>
+</div>
+<%-include('../partials/footer-logged-out')%>
+<%-include('../partials/credits-logged-out')%>
+<script type="module" src="/javascript/global.js" charset="utf-8"></script>
