@@ -1,0 +1,179 @@
+<nav>
+	<div id="nav-contents-wrapper">
+		<div id="nav-left">
+			<div id="nav-left-large">
+				<a href="https://ZachSteinberg.com">Zach Steinberg | Web Developer</a>
+			</div>
+			<div id="nav-left-small">
+				<div id="nav-left-small-name"><a href="https://ZachSteinberg.com">Zach Steinberg</a></div>
+				<div id="nav-left-small-title"><a href="https://ZachSteinberg.com">Web Developer</a></div>
+			</div>
+		</div>
+		<div id="nav-center">
+			<img
+				class="animate__animated animate__delay-1s animate__heartBeat"
+				id="nav-memoji"
+				src="/memojis/Zach-Memoji-smiling.png"
+				alt="Zach smiling emoji"
+			/>
+		</div>
+		<div id="nav-right">
+			<!-- class="navigation" below is required for clickable burger menu. If ID is used, its specificity overrides the "show" class, and "show" must be a class so it can be toggled by classList.toggle() in /javascript/javascript.js. -->
+			<ul
+				class="navigation-large"
+				id="navigation-large"
+			>
+				<a
+					href="#more-about-section-wrapper"
+					class="nav-link"
+					id="more-about-link"
+					><li>About</li></a
+				>
+				<button
+					class="nav-link-button"
+					id="more-about-link-button"
+					data-section="#more-about-section-wrapper"
+				>
+					<li>About</li>
+				</button>
+				<a
+					href="#skills-section-wrapper"
+					class="nav-link"
+					id="skills-link"
+					><li>Skills</li></a
+				>
+				<button
+					class="nav-link-button"
+					id="skills-link-button"
+					data-section="#skills-section-wrapper"
+				>
+					<li>Skills</li>
+				</button>
+				<a
+					href="#projects-section-wrapper"
+					class="nav-link"
+					id="projects-link"
+					><li>Projects</li></a
+				>
+				<button
+					class="nav-link-button"
+					id="projects-link-button"
+					data-section="#projects-section-wrapper"
+				>
+					<li>Projects</li>
+				</button>
+				<a
+					href="#contact-section-wrapper"
+					class="nav-link"
+					id="contact-link"
+					><li>Contact</li></a
+				>
+				<button
+					class="nav-link-button"
+					id="contact-link-button"
+					data-section="#contact-section-wrapper"
+				>
+					<li>Contact</li>
+				</button>
+			</ul>
+			<div class="navigation-small-no-script-wrapper">
+				<ul
+					class="navigation-small-no-script"
+					id="navigation-small-no-script-top"
+				>
+					<a
+						href="#more-about-section-wrapper"
+						class="nav-link"
+						id="more-about-link"
+						><li>About</li></a
+					>
+					<a
+						href="#skills-section-wrapper"
+						class="nav-link"
+						id="skills-link"
+						><li>Skills</li></a
+					>
+				</ul>
+				<ul
+					class="navigation-small-no-script"
+					id="navigation-small-no-script-bottom"
+				>
+					<a
+						href="#projects-section-wrapper"
+						class="nav-link"
+						id="projects-link"
+						><li>Projects</li></a
+					>
+					<a
+						href="#contact-section-wrapper"
+						class="nav-link"
+						id="contact-link"
+						><li>Contact</li></a
+					>
+				</ul>
+			</div>
+			<button id="burger-menu">
+				<svg
+					class="burger-menu-svg"
+					viewBox="0 0 100 80"
+					width="40"
+					height="40"
+				>
+					<rect
+						width="100"
+						height="15"
+						rx="8"
+					></rect>
+					<rect
+						y="30"
+						width="100"
+						height="15"
+						rx="8"
+					></rect>
+					<rect
+						y="60"
+						width="100"
+						height="15"
+						rx="8"
+					></rect>
+				</svg>
+			</button>
+		</div>
+	</div>
+</nav>
+<ul
+	class="navigation-small"
+	id="navigation-small"
+>
+	<button
+		class="nav-link-button"
+		id="more-about-link-button"
+		data-section="#more-about-section-wrapper"
+	>
+		<li>About</li>
+	</button>
+	<hr class="navigation-small-horizontal-rule" />
+	<button
+		class="nav-link-button"
+		id="skills-link-button"
+		data-section="#skills-section-wrapper"
+	>
+		<li>Skills</li>
+	</button>
+	<hr class="navigation-small-horizontal-rule" />
+	<button
+		class="nav-link-button"
+		id="projects-link-button"
+		data-section="#projects-section-wrapper"
+	>
+		<li>Projects</li>
+	</button>
+	<hr class="navigation-small-horizontal-rule" />
+	<button
+		class="nav-link-button"
+		id="contact-link-button"
+		data-section="#contact-section-wrapper"
+	>
+		<li>Contact</li>
+	</button>
+</ul>

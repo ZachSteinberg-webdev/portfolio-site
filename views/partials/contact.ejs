@@ -1,0 +1,100 @@
+<!-- Contact section -->
+<section
+	class="contact-section-wrapper"
+	id="contact-section-wrapper"
+>
+	<div
+		class="contact hidden-until-in-viewport"
+		id="contact"
+	>
+		<h2>Get In Touch!</h2>
+		<div id="contact-section-container">
+			<div id="contact-form-container">
+				<div id="contact-form-wrapper">
+					<form
+						id="contact-form"
+						class="contact-form"
+						action="/contact"
+						method="POST"
+					>
+						<input
+							type="text"
+							name="spamTrap"
+							style="display: none"
+						/>
+						<div class="form-control">
+							<label
+								class="form-label"
+								for="name"
+								>Name</label
+							>
+							<input
+								type="text"
+								id="name-field"
+								name="name"
+								placeholder="Enter Your Name"
+								class="input-field"
+								required
+							/>
+						</div>
+						<div class="form-control">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								id="email-field"
+								name="email"
+								placeholder="Enter Your Email"
+								class="input-field"
+								required
+							/>
+						</div>
+						<div class="form-control">
+							<label for="message">Message</label>
+							<textarea
+								id="message-field"
+								cols="60"
+								rows="10"
+								placeholder="Enter Your Message"
+								name="message"
+								class="input-field"
+								required
+							></textarea>
+						</div>
+						<div class="form-control submit-button-wrapper animate__animated">
+							<button
+								type="submit"
+								id="submit-btn"
+								class="submit-btn animate__animated"
+							>
+								Submit!
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="speech-bubble-and-contact-memoji-container">
+				<div id="speech-bubble-container">
+					<img
+						id="speech-bubble"
+						src="/images/speech-bubble.gif"
+						alt="Zach suggesting you contact him"
+					/>
+				</div>
+				<div id="contact-memoji-container">
+					<img
+						id="contact-memoji"
+						src="/memojis/Zach-Memoji-suggesting-you-contact-him-flipped.png"
+						alt="Zach suggesting you contact him"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="contact-memoji-container-above-500-px">
+			<img
+				id="contact-memoji"
+				src="/memojis/Zach-Memoji-suggesting-you-contact-him-flipped.png"
+				alt="Zach suggesting you contact him"
+			/>
+		</div>
+	</div>
+</section>

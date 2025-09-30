@@ -1,0 +1,17 @@
+<!-- Projects section -->
+<section
+	class="projects-section-wrapper"
+	id="projects-section-wrapper"
+>
+	<div
+		class="projects hidden-until-in-viewport"
+		id="projects"
+	>
+		<h2 id="projects-title">My Projects</h2>
+		<div id="projects-container">
+			<% (projects || []).forEach(function(p) { %>
+				<%- include('./project.ejs', p) %>
+			<% }) %>
+		</div>
+	</div>
+</section>

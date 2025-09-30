@@ -1,0 +1,17 @@
+<!-- Skills section -->
+<section
+	class="skills-section-wrapper"
+	id="skills-section-wrapper"
+>
+	<div
+		class="skills hidden-until-in-viewport"
+		id="skills"
+	>
+		<h2 id="skills-header">Skills</h2>
+		<div class="skills-wrapper">
+			<% (skills || []).forEach(function(s) { %>
+				<%- include('./skill.ejs', s) %>
+			<% }) %>
+		</div>
+	</div>
+</section>

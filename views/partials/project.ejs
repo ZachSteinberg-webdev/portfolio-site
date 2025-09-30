@@ -1,0 +1,78 @@
+<div
+	class="project-container"
+	id="project-<%= id %>"
+	itemscope
+	itemtype="https://schema.org/SoftwareApplication"
+>
+	<h3
+		class="project-title"
+		itemprop="name"
+	>
+		<%= title %>
+	</h3>
+	<div class="project-details-container">
+		<img
+			class="project-image"
+			src="<%= imgSrc %>"
+			alt="<%= imgAlt %>"
+			loading="lazy"
+			decoding="async"
+		/>
+		<p class="project-stack">
+			<span class="project-stack-label">Stack:</span> <%= stack %>
+		</p>
+		<p class="project-challenge">
+			<span class="project-challenge-label">Challenge:</span> <%= challenge %>
+		</p>
+		<% (Array.isArray(details) ? details : []).forEach((d, i) => { %>
+			<% if (d && typeof d === 'object' && 'html' in d) { %>
+				<p class="project-details">
+					<% if (i === 0) { %><span class="project-details-label">Description: </span><% } %>
+					<%- d.html %>
+				</p> <!-- unescaped: trusted HTML -->
+			<% } else { %>
+				<p class="project-details">
+					<% if (i === 0) { %><span class="project-details-label">Description: </span><% } %>
+					<%= d %></p> <!-- escaped: plain text -->
+			<% } %> 
+		<% }); %>
+	</div>
+	<div class="project-button-group">
+		<button
+			type="button"
+			name="expandButton"
+			class="project-button project-expand-button"
+			id="project-expand-button-<%= id %>"
+		>
+			Expand this section
+		</button>
+		<button
+			type="button"
+			name="githubButton"
+			class="project-button project-visit-button"
+			id="project-github-button-<%= id %>"
+		>
+			<a
+				class="github-button-text"
+				href="<%= codeUrl %>"
+				target="_blank"
+				rel="noreferrer"
+				>View code on GitHub
+			</a>
+		</button>
+		<button
+			type="button"
+			name="visitButton"
+			class="project-button project-visit-button"
+			id="project-visit-button-<%= id %>"
+		>
+			<a
+				class="visit-button-text"
+				href="<%= liveUrl %>"
+				target="_blank"
+				rel="noreferrer"
+				>Check it out!
+			</a>
+		</button>
+	</div>
+</div>
