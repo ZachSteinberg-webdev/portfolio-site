@@ -1,4 +1,3 @@
-// Details of each portfolio project, organized as a single `projects` object to import into `index.js`
 const projects = [
 	{
 		id: 1,

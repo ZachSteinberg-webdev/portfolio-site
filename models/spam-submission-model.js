@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
 const spamSubmissionSchema = new mongoose.Schema({
-	spamTrapData:{
+	spamTrapData: {
 		type: String,
-		required: true,
+		required: true
 	},
-	name:{
+	name: {
 		type: String,
 		required: [true, `Please provide your name.`],
 		trim: true
 	},
-	email:{
+	email: {
 		type: String,
 		required: [true, `Please provide an email address.`],
 		trim: true

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const contactFormSubmissionSchema = new mongoose.Schema({
-	name:{
+	name: {
 		type: String,
 		required: [true, `Please provide your name.`],
 		trim: true
 	},
-	email:{
+	email: {
 		type: String,
 		required: [true, `Please provide an email address.`],
 		trim: true
