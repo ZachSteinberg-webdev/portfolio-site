@@ -4,7 +4,6 @@
 }
 
 /* Variable declaration // ---------------------------------------------------------------- */
-
 :root {
 	--font-family: 'Roboto', sans-serif;
 	--font-size-section-title: 2rem;
@@ -51,7 +50,6 @@
 }
 
 /* Animate.css settings */
-
 .animate__animated.animate__lightSpeedInLeft {
 	--animate-duration: 750ms;
 }
@@ -69,7 +67,6 @@
 }
 
 /* CSS Resets // ---------------------------------------------------------------- */
-
 * {
 	margin: 0px;
 	padding: 0px;
@@ -90,7 +87,6 @@ small {
 }
 
 /* HTML // ---------------------------------------------------------------- */
-
 html {
 	scroll-behavior: smooth;
 	overscroll-behavior: none;
@@ -111,7 +107,6 @@ p::selection {
 }
 
 /* Nav Bar // ---------------------------------------------------------------- */
-
 nav {
 	position: sticky;
 	top: 0;
@@ -307,7 +302,6 @@ nav ul li {
 }
 
 /* Hero section // ---------------------------------------------------------------- */
-
 .hero-section-wrapper {
 	scroll-margin-top: var(--scroll-margin-top);
 	height: auto;
@@ -441,7 +435,6 @@ nav ul li {
 }
 
 /* More about section // ---------------------------------------------------------------- */
-
 .more-about-section-wrapper {
 	scroll-margin-top: var(--scroll-margin-top);
 	height: auto;
@@ -573,7 +566,6 @@ nav ul li {
 }
 
 /* Skills section // ---------------------------------------------------------------- */
-
 .skills-section-wrapper {
 	scroll-margin-top: var(--scroll-margin-top);
 	height: auto;
@@ -640,7 +632,6 @@ nav ul li {
 }
 
 /* Projects section // ---------------------------------------------------------------- */
-
 .projects-section-wrapper {
 	scroll-margin-top: var(--scroll-margin-top);
 	height: auto;
@@ -709,7 +700,6 @@ nav ul li {
 }
 
 /* width 750ms ease-in-out, scale 250ms ease-in-out (removed from .project-containers above) */
-
 .project-container:hover {
 	transform: scale(var(--hover-scale));
 	color: var(--hover-color);
@@ -959,6 +949,7 @@ nav ul li {
 .github-button-text {
 	height: 100%;
 	width: 100%;
+	padding: 0.25rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -975,6 +966,7 @@ nav ul li {
 .visit-button-text {
 	height: 100%;
 	width: 100%;
+	padding: 0.25rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1031,7 +1023,6 @@ nav ul li {
 }
 
 /* Contact section // ---------------------------------------------------------------- */
-
 .contact-section-wrapper {
 	scroll-margin-top: var(--scroll-margin-top);
 	height: auto;
@@ -1162,8 +1153,23 @@ nav ul li {
 	transition: 1ms;
 }
 
-/* Footer section // ---------------------------------------------------------------- */
+/* Honeypot field kept off-screen rather than display:none */
+.hp-field {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
 
+/* Optional status styling */
+.form-status {
+	margin-top: 0.5rem;
+	font-size: 0.95rem;
+	color: #0a7;
+}
+
+/* Footer section // ---------------------------------------------------------------- */
 footer {
 	display: flex;
 	align-items: flex-end;
@@ -1249,7 +1255,6 @@ footer {
 /* Animation stylings // ---------------------------------------------------------------- */
 
 /* (Must be at end of style declarations so it is read last and is cascades previous declarations) */
-
 .hidden-until-in-viewport {
 	opacity: 100;
 }
@@ -1257,7 +1262,6 @@ footer {
 /* Media queries // ---------------------------------------------------------------- */
 
 /* 1200px // ---------------------------------------------------------------- */
-
 @media (max-width: 1200px) {
 	#contact-container {
 		padding: 0 0 0 6rem;
@@ -1265,7 +1269,6 @@ footer {
 }
 
 /* 1100px // ---------------------------------------------------------------- */
-
 @media (max-width: 1100px) {
 	.project-title {
 		font-size: 1rem;
@@ -1273,7 +1276,6 @@ footer {
 }
 
 /* 940px // ---------------------------------------------------------------- */
-
 @media (max-width: 940px) {
 	#nav-left-large {
 		font-size: 1.2rem;
@@ -1397,7 +1399,6 @@ footer {
 }
 
 /* 768px // ---------------------------------------------------------------- */
-
 @media (max-width: 768px) {
 	#nav-left-large {
 		display: none;
@@ -1468,7 +1469,6 @@ footer {
 }
 
 /* 640px // ---------------------------------------------------------------- */
-
 @media (max-width: 640px) {
 	.bio {
 		padding: 2rem 0 2rem 2rem;
@@ -1515,7 +1515,6 @@ footer {
 }
 
 /* 600px // ---------------------------------------------------------------- */
-
 @media (max-width: 600px) {
 	.bio-container {
 		flex-direction: column;
@@ -1542,7 +1541,6 @@ footer {
 }
 
 /* 540px // ---------------------------------------------------------------- */
-
 @media (max-width: 540px) {
 	#footer-text-container {
 		font-size: 0.85rem;
@@ -1567,7 +1565,6 @@ footer {
 }
 
 /* 500px // ---------------------------------------------------------------- */
-
 @media (max-width: 500px) {
 	.Zach-Memoji-working-wrapper {
 		width: 80%;
@@ -1619,7 +1616,6 @@ footer {
 }
 
 /* 440px // ---------------------------------------------------------------- */
-
 @media (max-width: 440px) {
 	.bio {
 		padding: 1rem 1rem 0 1rem;
@@ -1643,7 +1639,6 @@ footer {
 }
 
 /* 414px // ---------------------------------------------------------------- */
-
 @media (max-width: 414px) {
 	:root {
 		--border-radius-left-trapezoid-large: 1rem 4rem 1rem 4rem;
@@ -1689,7 +1684,6 @@ footer {
 }
 
 /* 370px // ---------------------------------------------------------------- */
-
 @media (max-width: 370px) {
 	.hero-pic-container {
 		width: 65%;
@@ -1702,7 +1696,6 @@ footer {
 }
 
 /* 350px // ---------------------------------------------------------------- */
-
 @media (max-width: 350px) {
 	#nav-left-small {
 		font-size: 0.85rem;
@@ -1723,7 +1716,6 @@ footer {
 }
 
 /* 320px // ---------------------------------------------------------------- */
-
 @media (max-width: 320px) {
 	#nav-left-small {
 		font-size: 0.75rem;
@@ -1744,7 +1736,6 @@ footer {
 }
 
 /* 280px // ---------------------------------------------------------------- */
-
 @media (max-width: 280px) {
 	#hero-memoji {
 		left: 0.75rem;
@@ -1760,7 +1751,6 @@ footer {
 }
 
 /* 250px // ---------------------------------------------------------------- */
-
 @media (max-width: 250px) {
 	#nav-left-small {
 		font-size: 0.65rem;
@@ -1768,7 +1758,6 @@ footer {
 }
 
 /* Keyframes // ---------------------------------------------------------------- */
-
 @keyframes slide-from-bottom {
 	1% {
 		top: 412px;
@@ -1780,7 +1769,6 @@ footer {
 		opacity: 100%;
 	}
 }
-
 @keyframes slide-from-left {
 	from {
 		left: -90%;
@@ -1790,7 +1778,6 @@ footer {
 		left: -34%;
 	}
 }
-
 @keyframes slide-from-right {
 	from {
 		right: -165px;
@@ -1800,7 +1787,6 @@ footer {
 		right: 0px;
 	}
 }
-
 @keyframes slide-from-right-under-small-screen-widths {
 	from {
 		right: -165px;
@@ -1810,7 +1796,6 @@ footer {
 		right: -15px;
 	}
 }
-
 @keyframes slide-from-right-under-very-small-screen-widths {
 	from {
 		right: -165px;
@@ -1820,7 +1805,6 @@ footer {
 		right: -35px;
 	}
 }
-
 @keyframes slide-from-right-2 {
 	from {
 		right: -90%;
@@ -1830,7 +1814,6 @@ footer {
 		right: 0%;
 	}
 }
-
 @keyframes hide-project-container {
 	0% {
 		opacity: 100;
@@ -1847,7 +1830,6 @@ footer {
 		visibility: collapse;
 	}
 }
-
 @keyframes expand-project-container {
 	0% {
 		width: 25%;
@@ -1857,7 +1839,6 @@ footer {
 		width: 100%;
 	}
 }
-
 @keyframes unhide-project-container {
 	0% {
 		opacity: 0;
@@ -1874,7 +1855,6 @@ footer {
 		visibility: visible;
 	}
 }
-
 @keyframes collapse-project-container {
 	0% {
 		width: 100%;
@@ -1884,7 +1864,6 @@ footer {
 		width: 25%;
 	}
 }
-
 @keyframes expand-memoji-container-animation {
 	from {
 		top: 0;

@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title><%= (typeof title !== 'undefined' && title) ? title : 'Zach Steinberg | Web Developer' %></title>
-
   <!-- Required meta -->
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Junior full-stack developer — React, Node, Express, MongoDB. Project demos, GitHub links, and a contact form.">
-
+  
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Zach Steinberg | Web Developer">
   <meta property="og:description" content="Project demos, GitHub links, and a contact form.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="/images/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
-
+  
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/Zach-Memoji-favicon-180x180.png">
   <link rel="icon" sizes="32x32" href="/favicons/Zach-Memoji-favicon-32x32.png">
-
+  
   <!-- Base styles (your existing files) -->
   <link rel="stylesheet" href="/css/styles.css">
   <noscript><link rel="stylesheet" href="/css/styles-noscript.css"></noscript>
-
+  
+  <!-- allow child views to push extra tags into <head> -->
+  <%- block('head') %>
+  <title><%= (typeof title !== 'undefined' && title) ? title : 'Zach Steinberg | Web Developer' %></title>
+  
 </head>
 <body class="<%= (typeof bodyClass !== 'undefined' && bodyClass) ? bodyClass : '' %>">
 

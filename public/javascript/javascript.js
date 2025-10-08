@@ -65,24 +65,6 @@ const passportjsIconWrapper = document.querySelector('#passportjs-icon-wrapper')
 const jwtIconWrapper = document.querySelector('#jwt-icon-wrapper');
 const herokuIconWrapper = document.querySelector('#heroku-icon-wrapper');
 const zachThumbsUppingMemojiWrapper = document.querySelector('#Zach-thumbs-upping-memoji-wrapper');
-// const zachWonderingMemojiWrapperSmall = document.querySelector('#Zach-wondering-memoji-wrapper-small');
-// const html5IconWrapperSmall = document.querySelector('#HTML5-icon-wrapper-small');
-// const css3IconWrapperSmall = document.querySelector('#CSS3-icon-wrapper-small');
-// const bootstrapIconWrapperSmall = document.querySelector('#bootstrap-icon-wrapper-small');
-// const jsIconWrapperSmall = document.querySelector('#JS-icon-wrapper-small');
-// const ejsIconWrapperSmall = document.querySelector('#ejs-icon-wrapper-small');
-// const npmIconWrapperSmall = document.querySelector('#npm-icon-wrapper-small');
-// const nodejsIconWrapperSmall = document.querySelector('#nodejs-icon-wrapper-small');
-// const expressjsIconWrapperSmall = document.querySelector('#expressjs-icon-wrapper-small');
-// const reactIconWrapperSmall = document.querySelector('#react-icon-wrapper-small');
-// const viteIconWrapperSmall = document.querySelector('#vite-icon-wrapper-small');
-// const axiosIconWrapperSmall = document.querySelector('#axios-icon-wrapper-small');
-// const mongodbIconWrapperSmall = document.querySelector('#mongodb-icon-wrapper-small');
-// const mongooseIconWrapperSmall = document.querySelector('#mongoose-icon-wrapper-small');
-// const passportjsIconWrapperSmall = document.querySelector('#passportjs-icon-wrapper-small');
-// const jwtIconWrapperSmall = document.querySelector('#jwt-icon-wrapper-small');
-// const herokuIconWrapperSmall = document.querySelector('#heroku-icon-wrapper-small');
-// const zachThumbsUppingMemojiWrapperSmall = document.querySelector('#Zach-thumbs-upping-memoji-wrapper-small');
 const projectsSection = document.querySelector('#projects');
 const zachMemojiWorkingWrapper = document.querySelector('.Zach-Memoji-working-wrapper');
 const contactSection = document.querySelector('#contact');
@@ -428,268 +410,6 @@ const zachThumbsUppingMemojiObserver = new IntersectionObserver(
 		rootMargin: '0px'
 	}
 );
-// Skill icons small observers
-// Zach wondering memoji small observer
-// const zachWonderingMemojiSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// HTML 5 icon small observer
-// const htmlIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // CSS 3 icon small observer
-// const css3IconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Bootstrap icon small observer
-// const bootstrapIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // JS icon small observer
-// const jsIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // EJS icon small observer
-// const ejsIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // NPM icon small observer
-// const npmIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Node.js icon small observer
-// const nodejsIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Express.js icon small observer
-// const expressjsIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // React icon small observer
-// const reactIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Vite icon small observer
-// const viteIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Axios icon small observer
-// const axiosIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // MongoDB icon small observer
-// const mongodbIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Mongoose icon small observer
-// const mongooseIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Passport.js icon small observer
-// const passportjsIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // JWT icon small observer
-// const jwtIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Heroku icon small observer
-// const herokuIconSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
-// // Zach thumbs-upping memoji small observer
-// const zachThumbsUppingMemojiSmallObserver = new IntersectionObserver(
-// 	(entries) => {
-// 		entries.forEach((entry) => {
-// 			entry.target.classList.toggle('animate__animated', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__delay-1s', entry.isIntersecting);
-// 			entry.target.classList.toggle('animate__pulse', entry.isIntersecting);
-// 		});
-// 	},
-// 	{
-// 		threshold: 1,
-// 		root: null,
-// 		rootMargin: '0px'
-// 	}
-// );
 // Projects observer
 const projectsObserver = new IntersectionObserver(
 	(entries) => {
@@ -708,19 +428,19 @@ const projectsObserver = new IntersectionObserver(
 	}
 );
 // Zach-Memoji-working observer
-const zachMemojiWorkingWrapperObserver = new IntersectionObserver(
-	(entries) => {
-		entries.forEach((entry) => {
-			entry.target.classList.toggle('Zach-Memoji-working-animation', entry.isIntersecting);
-			if (entry.isIntersecting) zachMemojiWorkingWrapperObserver.unobserve(entry.target);
-		});
-	},
-	{
-		threshold: 1,
-		root: null,
-		rootMargin: '0px'
-	}
-);
+// const zachMemojiWorkingWrapperObserver = new IntersectionObserver(
+// 	(entries) => {
+// 		entries.forEach((entry) => {
+// 			entry.target.classList.toggle('Zach-Memoji-working-animation', entry.isIntersecting);
+// 			if (entry.isIntersecting) zachMemojiWorkingWrapperObserver.unobserve(entry.target);
+// 		});
+// 	},
+// 	{
+// 		threshold: 1,
+// 		root: null,
+// 		rootMargin: '0px'
+// 	}
+// );
 // Contact observer
 const contactObserver = new IntersectionObserver(
 	(entries) => {
@@ -875,24 +595,6 @@ passportjsIconObserver.observe(passportjsIconWrapper);
 jwtIconObserver.observe(jwtIconWrapper);
 herokuIconObserver.observe(herokuIconWrapper);
 zachThumbsUppingMemojiObserver.observe(zachThumbsUppingMemojiWrapper);
-// zachWonderingMemojiSmallObserver.observe(zachWonderingMemojiWrapperSmall);
-// htmlIconSmallObserver.observe(html5IconWrapperSmall);
-// css3IconSmallObserver.observe(css3IconWrapperSmall);
-// bootstrapIconSmallObserver.observe(bootstrapIconWrapperSmall);
-// jsIconSmallObserver.observe(jsIconWrapperSmall);
-// ejsIconSmallObserver.observe(ejsIconWrapperSmall);
-// npmIconSmallObserver.observe(npmIconWrapperSmall);
-// nodejsIconSmallObserver.observe(nodejsIconWrapperSmall);
-// expressjsIconSmallObserver.observe(expressjsIconWrapperSmall);
-// reactIconSmallObserver.observe(reactIconWrapperSmall);
-// viteIconSmallObserver.observe(viteIconWrapperSmall);
-// axiosIconSmallObserver.observe(axiosIconWrapperSmall);
-// mongodbIconSmallObserver.observe(mongodbIconWrapperSmall);
-// mongooseIconSmallObserver.observe(mongooseIconWrapperSmall);
-// passportjsIconSmallObserver.observe(passportjsIconWrapperSmall);
-// jwtIconSmallObserver.observe(jwtIconWrapperSmall);
-// herokuIconSmallObserver.observe(herokuIconWrapperSmall);
-// zachThumbsUppingMemojiSmallObserver.observe(zachThumbsUppingMemojiWrapperSmall);
 projectsObserver.observe(projectsSection);
 // zachMemojiWorkingWrapperObserver.observe(zachMemojiWorkingWrapper);
 contactObserver.observe(contactSection);
@@ -1092,35 +794,76 @@ projectExpandButtons.forEach((item) => {
 	item.addEventListener('click', projectExpandButtonClickHandler);
 });
 
-// Contact form
-const contactForm = document.querySelector('#contact-form');
-const inputFields = document.querySelectorAll('.input-field');
-const contactSubmitButton = document.querySelector('.submit-btn');
+// JS handshake flips to '1' after a short delay to identify real browsers in AJAX mode.
+setTimeout(() => {
+	const el = document.getElementById('js-ready');
+	if (el) el.value = '1';
+}, 2200); // Delay tuning
 
-const handleContactFormSubmit = async (e) => {
-	e.preventDefault();
-	contactSubmitButton.innerText = `Thank you! I'll be in touch!`;
-	const formData = new FormData(document.getElementById('contact-form'));
-	const spamTrap = formData.get('spamTrap');
-	const name = formData.get('name');
-	const email = formData.get('email');
-	const message = formData.get('message');
-	const test = await fetch('/contact', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			spamTrap: spamTrap,
-			name: name,
-			email: email,
-			message: message
-		})
-	}).catch((err) => console.log(err));
-	inputFields.forEach((field, i) => {
-		field.value = '';
+// Contact form handler - pre-empts default HTML form submission handler
+document.addEventListener('DOMContentLoaded', () => {
+	const form = document.getElementById('contact-form');
+	if (!form) return;
+	// Grab the CSRF token directly from the hidden input
+	const tokenEl = form.querySelector('input[name="_csrf"]');
+	const csrfToken = tokenEl ? tokenEl.value : '';
+	const submitBtn = form.querySelector('[type="submit"]');
+
+	form.addEventListener('submit', async (e) => {
+		// Prevent default only when JS is active (AJAX path)
+		e.preventDefault();
+		if (submitBtn) submitBtn.disabled = true;
+
+		try {
+			const fd = new FormData(form);
+			const data = Object.fromEntries(fd.entries());
+
+			const resp = await fetch('/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken },
+				body: JSON.stringify(data),
+				credentials: 'same-origin'
+			});
+
+			// Treat 200 and 204 as user success (avoid signaling to bots)
+			if (resp.ok || resp.status === 200) {
+				// const done = document.createElement('p');
+				// done.className = 'form-status';
+				// done.textContent = `Thank you! I'll be in touch!`;
+				// form.appendChild(done);
+				submitBtn.innerText = `Thank you! I'll be in touch!`;
+				// Clear visible inputs; keep hidden tokens intact
+				form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((el) => (el.value = ''));
+			} else if (resp.status === 204) {
+				// const done = document.createElement('p');
+				// done.className = 'form-status';
+				// done.textContent = `Thank you! I'll be in touch!`;
+				// form.appendChild(done);
+				submitBtn.innerText = `Please wait one hour before submitting the form again.`;
+				// Clear visible inputs; keep hidden tokens intact
+				form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((el) => (el.value = ''));
+			} else if (resp.status === 429) {
+				// Dev-only path for when rate limiter returns 429 HTTP status during development/testing
+				// const err = document.createElement('p');
+				// err.className = 'form-status';
+				// err.textContent = 'Please wait one hour before submitting the form again.';
+				// form.appendChild(err);
+				submitBtn.innerText = `Please wait one hour before submitting the form again.`;
+			} else {
+				// const err = document.createElement('p');
+				// err.className = 'form-status';
+				// err.textContent = 'Something went wrong. Please try again.';
+				// form.appendChild(err);
+				submitBtn.innerText = `Something went wrong. Please try again.`;
+			}
+		} catch {
+			// const err = document.createElement('p');
+			// err.className = 'form-status';
+			// err.textContent = 'Network error. Please try again.';
+			// form.appendChild(err);
+			submitBtn.innerText = `Network error. Please try again.`;
+		} finally {
+			if (submitBtn) submitBtn.disabled = false;
+		}
 	});
-	return false;
-};
-
-contactForm.addEventListener('submit', handleContactFormSubmit);
+});

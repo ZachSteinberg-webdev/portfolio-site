@@ -259,6 +259,73 @@
 	right: 15%;
 }
 
+.notice {
+	position: fixed;
+	top: 0.5rem; /* 0.5rem offset from top */
+	left: 50%;
+	transform: translateX(-50%); /* center horizontally */
+	z-index: 9999; /* on top of page chrome */
+
+	/* Size & spacing */
+	width: calc(100% - 1rem); /* 0.5rem inset on both sides */
+	max-width: 44rem; /* sane max width */
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+
+	/* Typography */
+	font: 600 0.95rem/1.25 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+	text-align: center;
+
+	/* Visuals (overridden by variants like .notice-warning) */
+	background: #f0f4ff;
+	color: #0b3a82;
+	border: 1px solid #c9d7ff;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+	/* Auto-hide after 2s: wait 2s, then fade out fast and keep hidden */
+	animation: notice-fade-out 0.3s ease-in 4s forwards;
+	pointer-events: none; /* avoid intercepting clicks on page below */
+}
+
+/* Warning variant (matches your .notice notice-warning markup) */
+.notice.notice-warning {
+	background: #fff3cd;
+	color: #664d03;
+	border-color: #ffe69c;
+}
+
+/* Fade + hide (visibility prevents it from being focusable after fade) */
+@keyframes notice-fade-out {
+	0% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+		visibility: visible;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(-6px);
+		visibility: hidden;
+	}
+}
+
+/* Reduced-motion: keep the fade, remove vertical movement */
+@media (prefers-reduced-motion: reduce) {
+	.notice {
+		animation: notice-fade-out-reduced 0.25s linear 4s forwards;
+	}
+	@keyframes notice-fade-out-reduced {
+		0% {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		100% {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+}
 @media (max-width: 768px) {
 	.close-no-script-warning {
 		height: 4vw;
@@ -280,13 +347,11 @@
 		top: -75%;
 	}
 }
-
 @media (max-width: 715px) {
 	.zach-working-memoji-message-container-no-script {
 		top: -65%;
 	}
 }
-
 @media (max-width: 610px) {
 	.close-no-script-warning-container {
 		right: 6.5%;
@@ -298,13 +363,11 @@
 		font-size: 80%;
 	}
 }
-
 @media (max-width: 575px) {
 	.zach-working-memoji-message-container-no-script {
 		top: -55%;
 	}
 }
-
 @media (max-width: 500px) {
 	.navigation-small-no-script {
 		padding-left: 0.5rem;
@@ -331,7 +394,6 @@
 		left: 0%;
 	}
 }
-
 @media (max-width: 414px) {
 	.navigation-small-no-script {
 		font-size: 1rem;
@@ -353,7 +415,6 @@
 		top: -55%;
 	}
 }
-
 @media (max-width: 360px) {
 	.close-no-script-warning {
 		height: 11vw;
@@ -361,7 +422,6 @@
 		border-radius: var(--border-radius-x-small);
 	}
 }
-
 @media (max-width: 350px) {
 	.navigation-small-no-script {
 		font-size: 0.85rem;
@@ -371,7 +431,6 @@
 		font-size: 0.85rem;
 	}
 }
-
 @media (max-width: 320px) {
 	.no-script-heading-container {
 		font-size: 0.75rem;

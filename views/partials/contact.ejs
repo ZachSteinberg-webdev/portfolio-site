@@ -17,10 +17,20 @@
 						action="/contact"
 						method="POST"
 					>
+						<!-- Hidden anti-spam fields -->
+						<input type="hidden" name="_csrf"    value="<%= csrfToken %>" />
+						<input type="hidden" name="t"        value="<%= t %>" />
+						<input type="hidden" name="sig"      value="<%= sig %>" />
+						<input type="hidden" name="js_ready" value="0" id="js-ready" />
+						<!-- Rotating honeypot (off-screen via CSS) -->
 						<input
 							type="text"
-							name="spamTrap"
-							style="display: none"
+							name="<%= hpName %>"
+							value=""
+							class="hp-field"
+							tabindex="-1"
+							aria-hidden="true"
+							autocomplete="off"
 						/>
 						<div class="form-control">
 							<label
@@ -97,4 +107,22 @@
 			/>
 		</div>
 	</div>
+	<!-- Status banner for no-JS flows -->
+	<% if (status === 'expired') { %>
+		<p class="notice notice-warning" role="status">Form expired while page was open. Please try again.</p>
+	<% } %>
+	<% if (status === 'missing') { %>
+		<p class="notice notice-warning" role="status">Please fill out all required fields.</p>
+	<% } %>
+	<% if (status === 'error') { %>
+		<p class="notice notice-warning" role="status">Something went wrong. Please try again.</p>
+	<% } %>
+	<% if (status === 'ok') { %>
+		<p class="notice notice-warning" role="status">Thank you! Message sent.</p>
+	<% } %>
+	<% if (status === 'rate_limited') { %>
+		<div class="notice notice-warning" role="status">
+			Please wait an hour before submitting the form again.
+		</div>
+	<% } %>
 </section>
