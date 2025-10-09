@@ -8,10 +8,19 @@ const SpamSubmissionSchema = new mongoose.Schema(
 		email: { type: String, trim: true, default: '' },
 		message: { type: String, trim: true, default: '' },
 
-		// Optional blob from earlier versions; preserved for compatibility
-		spamTrapData: { type: String, default: '' },
+		// spamTrapData captured for analysis
+		spamTrapData: new mongoose.Schema(
+			{
+				hpKey: { type: String, default: '' },
+				hpVal: { type: String, default: '' }
+			},
+			{
+				_id: false,
+				strict: true
+			}
+		),
 
-		// New structured metadata for analysis
+		// Structured metadata for analysis
 		meta: {
 			mode: { type: String, enum: ['ajax', 'form', 'unknown'], default: 'unknown' },
 			age: { type: Number, default: 0 },

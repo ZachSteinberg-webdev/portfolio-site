@@ -117,7 +117,7 @@ async function logSpam({
 		name,
 		email,
 		message,
-		spamTrapData: spamTrapData ? JSON.stringify(spamTrapData) : '',
+		spamTrapData,
 		meta: { ...baseMeta, ...metaExtras },
 		final_spam_score: scorePack ? scorePack.final : typeof finalScore === 'number' ? finalScore : 90
 	});
