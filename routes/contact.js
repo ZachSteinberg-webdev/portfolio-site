@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv').config();
 }
 const express = require('express');
-const crypto = require('crypto');
+const crypto = require('node:crypto');
 const dns = require('dns').promises;
 const { rateLimit, ipKeyGenerator } = require('express-rate-limit'); // To prevent rapid contact submissions
 const validator = require('validator'); // For email syntax check
@@ -73,6 +73,24 @@ const contactLimiter = rateLimit({
 
 // HMAC secret for (ip|t)
 const HMAC_SECRET = process.env.FORM_HMAC_SECRET;
+const SIGNING_ENABLED = !!HMAC_SECRET;
+
+// Warn if HMAC_SECRET environment variable is missing
+if (!HMAC_SECRET) {
+	console.warn('HMAC_SECRET is missing; signatures will always fail.');
+}
+
+// Signature helper
+function sign(ip, t) {
+	if (!HMAC_SECRET) return '__missing_secret__';
+	return crypto.createHmac('sha256', HMAC_SECRET).update(`${ip}|${t}`).digest('hex');
+}
+
+// Disable HMAC signing if FORM_HMAC_SECRET environment variable is missing
+function verifySig(ip, t, sig) {
+	if (!SIGNING_ENABLED) return true; // don’t block when disabled
+	return !!sig && sig === sign(ip, t);
+}
 
 // Email syntax options (single source of truth)
 const EMAIL_VALIDATOR_OPTS = {
@@ -123,17 +141,18 @@ async function logSpam({
 	});
 }
 
-// Silent sink wrapper (log and end response with 204)
+// Silent sink wrapper (log and end response with 200)
 // Keep UX consistent for bots; no visible error
 async function sinkSpam(args, res) {
 	await logSpam(args);
-	return res.status(204).end();
+	const { mode, req } = args || {};
+	return respondContactSuccess({ req, res, mode });
 }
 
 // Signature helper
-function sign(ip, t) {
-	return crypto.createHmac('sha256', HMAC_SECRET).update(`${ip}|${t}`).digest('hex');
-}
+// function sign(ip, t) {
+// 	return crypto.createHmac('sha256', HMAC_SECRET).update(`${ip}|${t}`).digest('hex');
+// }
 
 // Normalize strings before hashing/dedupe
 function norm(s) {
@@ -273,6 +292,27 @@ function computeScores({ message, headers, mxOk }) {
 	};
 }
 
+/* ---------- Success Response ---------- */
+function respondContactSuccess({ req, res, mode, payload = { ok: true } }) {
+	if (mode === 'ajax') {
+		return res.status(200).json(payload); // explicit 200
+	}
+	if (mode === 'form') {
+		if (req?.session) {
+			// One-time thank-you gate flag
+			req.session.justContactedAt = Date.now();
+			// Ensure session is persisted before redirect (avoids rare race on fast redirects)
+			return req.session.save(() => res.redirect(303, '/thank-you'));
+			// To log save errors:
+			// return req.session.save(err => { if (err) console.error(err); return res.redirect(303, '/thank-you'); });
+		}
+		// Fallback if session isn't available for some reason
+		return res.redirect(303, '/thank-you');
+	}
+	// Fallback for unexpected mode
+	return res.status(200).end();
+}
+
 /* ---------- Route ---------- */
 
 router.post('/contact', contactLimiter, async (req, res) => {
@@ -320,7 +360,7 @@ router.post('/contact', contactLimiter, async (req, res) => {
 	const tooFast = !Number.isFinite(age) || age < MIN_FILL_MS;
 	const tooOld =
 		mode === 'ajax' ? Number.isFinite(age) && age > MAX_AGE_AJAX_MS : Number.isFinite(age) && age > MAX_AGE_FORM_MS;
-	const badSig = sig !== sign(req.ip, String(t));
+	const badSig = !verifySig(req.ip, String(t), sig);
 
 	// Email syntax validation (server-side). Block obvious bot posts.
 	if (!isEmailSyntaxOk(email)) {
@@ -392,13 +432,7 @@ router.post('/contact', contactLimiter, async (req, res) => {
 	});
 
 	// Respond success
-	if (mode === 'ajax') return res.json({ ok: true });
-	if (mode === 'form') {
-		// One-time thank-you gate flag
-		req.session.justContactedAt = Date.now();
-		// Ensure session is persisted before redirect (avoids rare race on fast redirects)
-		return req.session.save(() => res.redirect(303, '/thank-you'));
-	}
+	return respondContactSuccess({ req, res, mode });
 });
 
 module.exports = router;

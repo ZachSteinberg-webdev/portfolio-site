@@ -14,9 +14,8 @@ const hmsTime = require('./utilities/hmsTime');
 const cookieParser = require('cookie-parser'); // Cookie parsing needed for csurf cookie
 const csurf = require('@dr.pogodin/csurf'); // CSRF protection
 const crypto = require('node:crypto'); // HMAC and honeypot name
-const ContactFormSubmission = require('./models/contactFormSubmissionModel.js');
-const SpamSubmission = require('./models/spamSubmissionModel.js');
 const { errorHandler } = require('./utilities/errorHandling');
+const isProd = process.env.NODE_ENV === 'production';
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -72,6 +71,42 @@ app.use(
 	})
 );
 
+/* ---------- Helmet policy ---------- */
+app.use(
+	helmet({
+		// Content Security Policy: allow same-origin pages, JS/CSS, and nonced inlines
+		contentSecurityPolicy: {
+			useDefaults: true,
+			directives: {
+				defaultSrc: ["'self'"],
+				baseUri: ["'self'"],
+				frameAncestors: ["'none'"], // no embedding site
+				formAction: ["'self'"], // only same-origin forms can send POST requests
+				connectSrc: ["'self'"], // AJAX (fetch /contact)
+				imgSrc: ["'self'", 'data:'], // favicons, data URIs ok
+				fontSrc: ["'self'"],
+				scriptSrc: ["'self'"],
+				styleSrc: ["'self'"],
+				// upgradeInsecureRequests adds auto-HTTPS. Enable only in prod behind HTTPS:
+				...(isProd ? { upgradeInsecureRequests: [] } : {})
+			}
+			// In early testing, flip this on to observe violations without blocking:
+			// reportOnly: !isProd,
+		},
+
+		// COEP off to avoid breakage
+		crossOriginOpenerPolicy: { policy: 'same-origin' },
+		crossOriginResourcePolicy: { policy: 'same-origin' },
+		crossOriginEmbedderPolicy: false,
+
+		// Classic hardening
+		frameguard: { action: 'deny' }, // clickjacking
+		referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+		dnsPrefetchControl: { allow: false },
+		hsts: isProd ? { maxAge: 15552000, includeSubDomains: true, preload: false } : false // ~180d; HTTPS only
+	})
+);
+
 /* ---------- Per-request locals for contact form ---------- */
 
 app.use((req, res, next) => {
@@ -97,7 +132,10 @@ app.use((req, res, next) => {
 /* ---------- Trust proxy (if behind proxy/load balancer) ---------- */
 
 // Trust proxy for accurate req.ip when on managed hosting/CDN
-app.set('trust proxy', 1);
+app.set('trust proxy', 2);
+
+/* ---------- Hide x-powered-by headers ---------- */
+app.disable('x-powered-by'); // Redundant and covered by Helmet policy; just here as fail-safe
 
 // Routes -----------------------------------------------------------
 

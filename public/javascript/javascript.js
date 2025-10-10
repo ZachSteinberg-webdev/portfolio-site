@@ -816,6 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		try {
 			const fd = new FormData(form);
+			fd.append('js_ready', '1');
 			const data = Object.fromEntries(fd.entries());
 
 			const resp = await fetch('/contact', {
@@ -826,7 +827,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 
 			// Treat 200 and 204 as user success (avoid signaling to bots)
-			if (resp.ok || resp.status === 200) {
+			if (resp.status === 200) {
 				// const done = document.createElement('p');
 				// done.className = 'form-status';
 				// done.textContent = `Thank you! I'll be in touch!`;
