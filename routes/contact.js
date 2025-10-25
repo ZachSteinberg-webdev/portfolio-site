@@ -120,7 +120,8 @@ async function logSpam({
 		mode,
 		age,
 		flags,
-		headers: headerSnapshot(req, mode)
+		headers: headerSnapshot(req, mode),
+		client: clientMetaFrom(req)
 	};
 
 	if (scorePack) {
@@ -148,11 +149,6 @@ async function sinkSpam(args, res) {
 	const { mode, req } = args || {};
 	return respondContactSuccess({ req, res, mode });
 }
-
-// Signature helper
-// function sign(ip, t) {
-// 	return crypto.createHmac('sha256', HMAC_SECRET).update(`${ip}|${t}`).digest('hex');
-// }
 
 // Normalize strings before hashing/dedupe
 function norm(s) {
@@ -253,6 +249,64 @@ async function seenBefore(name, email, message) {
 		if (e?.code === 11000) return true; // Form submission duplicate; combo of name, email, message not unique
 		throw e;
 	}
+}
+
+// ---- IP address helpers (mask + hash) ----
+const IP_HASH_SALT = process.env.IP_HASH_SALT || 'dev-salt'; // set a strong secret in prod
+
+function getClientIP(req) {
+	// trust proxy is already set; prefer Cloudflare/Heroku headers if present
+	return req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.ip || '';
+}
+
+function maskIPv4To24(ip) {
+	const m = ip.match(/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/);
+	return m ? `${m[1]}.${m[2]}.${m[3]}.0/24` : '';
+}
+
+// zero the lower 64 bits and add /64 suffix
+function maskIPv6To64(ip) {
+	if (!ip.includes(':')) return '';
+	// normalize :: shorthand to 8 hextets
+	const parts = ip.split(':');
+	const expanded = [];
+	let skipped = false;
+	for (let i = 0; i < parts.length; i++) {
+		if (parts[i] === '' && !skipped) {
+			const missing = 9 - parts.length;
+			for (let j = 0; j < missing; j++) expanded.push('0000');
+			skipped = true;
+		} else {
+			expanded.push(parts[i].padStart(4, '0'));
+		}
+	}
+	while (expanded.length < 8) expanded.push('0000');
+	// zero lower 64 bits
+	expanded[4] = '0000';
+	expanded[5] = '0000';
+	expanded[6] = '0000';
+	expanded[7] = '0000';
+	// compress back a bit (optional)
+	const masked = expanded.join(':').replace(/(^|:)0{1,3}/g, '$1'); // minimal prettify
+	return `${masked}/64`;
+}
+
+function ipNetworkString(ip) {
+	if (!ip) return '';
+	return ip.includes(':') ? maskIPv6To64(ip) : maskIPv4To24(ip);
+}
+
+function ipHash(ip) {
+	if (!ip) return '';
+	return crypto.createHmac('sha256', IP_HASH_SALT).update(ip).digest('hex');
+}
+
+function clientMetaFrom(req) {
+	const ipRaw = getClientIP(req);
+	return {
+		ipNetwork: ipNetworkString(ipRaw), // e.g., "203.0.113.0/24" or "2001:db8:...::/64"
+		ipHash: ipHash(ipRaw)
+	};
 }
 
 /* ---------- Scoring (log-only; never blocks) ---------- */
@@ -423,6 +477,7 @@ router.post('/contact', contactLimiter, async (req, res) => {
 			age,
 			mxOk,
 			headers,
+			client: clientMetaFrom(req),
 			urlCount: scorePack.rawSignals.urlCount,
 			length: scorePack.rawSignals.length,
 			nonLatinOnly: scorePack.rawSignals.nonLatinOnly,

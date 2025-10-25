@@ -42,6 +42,12 @@ const SpamSubmissionSchema = new mongoose.Schema(
 				fetchOK: { type: Boolean, default: false }
 			},
 
+			// Client / network fingerprint (NEW)
+			client: {
+				ipNetwork: { type: String, default: '' }, // e.g. "203.0.113.0/24" or "2001:db8:1234:5678::/64"
+				ipHash: { type: String, default: '' } // HMAC-SHA256 hash of the raw IP using your IP_HASH_SALT
+			},
+
 			// Content probes (raw)
 			urlCount: { type: Number, default: 0 },
 			length: { type: Number, default: 0 },

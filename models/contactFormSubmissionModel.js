@@ -29,6 +29,12 @@ const ContactFormSubmissionSchema = new mongoose.Schema(
 			length: { type: Number, default: 0 },
 			nonLatinOnly: { type: Boolean, default: false },
 
+			// Client / network fingerprint (NEW)
+			client: {
+				ipNetwork: { type: String, default: '' }, // e.g. "203.0.113.0/24" or "2001:db8:1234:5678::/64"
+				ipHash: { type: String, default: '' } // HMAC-SHA256 hash of the raw IP using your IP_HASH_SALT
+			},
+
 			// Per-layer scores (kept separate)
 			scores: {
 				urlCount: { type: Number, default: 0 },
