@@ -841,8 +841,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				// done.textContent = `Thank you! I'll be in touch!`;
 				// form.appendChild(done);
 				submitBtn.innerText = `Please wait one hour before submitting the form again.`;
-				// Clear visible inputs; keep hidden tokens intact
-				form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((el) => (el.value = ''));
+				// Clear visible inputs; keep hidden tokens intact (commented out so legitimate user doesn't lose composed message)
+				// form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((el) => (el.value = ''));
 			} else if (resp.status === 429) {
 				// Dev-only path for when rate limiter returns 429 HTTP status during development/testing
 				// const err = document.createElement('p');
