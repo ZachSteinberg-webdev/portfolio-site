@@ -45,13 +45,28 @@ const keyGenerator = (req, res) => {
 };
 
 // Contact limiter setup
+const CONTACT_RATE_LIMIT_BYPASS_NAME = process.env.CONTACT_CONTACT_RATE_LIMIT_BYPASS_NAME || '';
+
 const contactLimiter = rateLimit({
 	windowMs: Number(process.env.CONTACT_FORM_RATE_LIMITER_WINDOW_MS), // 1 hour
 	max: Number(process.env.CONTACT_FORM_RATE_LIMITER_MAX_IN_WINDOW), // 1
 	standardHeaders: true,
 	legacyHeaders: false,
 	keyGenerator,
-	// optional: silent sink in prod, visible in dev
+	skip: (req, _res) => {
+		// allow bypass ONLY in production, and ONLY if the submitted
+		// "name" matches your secret tester name exactly
+		if (process.env.NODE_ENV === 'production' && CONTACT_RATE_LIMIT_BYPASS_NAME) {
+			// For AJAX submits (JSON) and no-JS form submits (urlencoded),
+			// the body parser should have run already.
+			const submittedName = req.body && req.body.name ? String(req.body.name).trim() : '';
+			if (submittedName === CONTACT_RATE_LIMIT_BYPASS_NAME) {
+				return true; // skip rate limiting
+			}
+		}
+		return false;
+	},
+	// Silent sink in prod, visible in dev
 	handler: (req, res, _next, options) => {
 		const isProd = process.env.NODE_ENV === 'production';
 		const isJSON = req.is('application/json');
