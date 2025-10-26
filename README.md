@@ -1,4 +1,4 @@
-Personal Portfolio Site
+# Personal Portfolio Site
 
 This is my production-grade personal portfolio website.  
 It's intentionally small and fast, and it's deployed as a live production service (Express on Heroku + MongoDB Atlas + Cloudflare) — but it includes the kinds of security, abuse mitigation, reliability, and observability patterns you'd normally expect from a “real” app, not just a static portfolio.
