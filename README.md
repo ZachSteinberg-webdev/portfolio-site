@@ -170,7 +170,8 @@ How it works:
    - Strip Gmail `+tag`s and ignored dots.
    - For the message body, remove whitespace so `"hello   "` and `"hello"` hash the same.
 
-2. I make a JSON array like:  
+2. I make a JSON array like:
+
    `[canonName, canonEmail, canonMsg]`
 
 3. I SHA-256 hash that array and try to insert it into the `submissionfingerprints` collection, which has a unique index on that hash.
